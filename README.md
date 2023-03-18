@@ -9,3 +9,4 @@ This project was possible due to the following libraries:
 - [Jackson](https://github.com/FasterXML/jackson)
 - [log4j](https://logging.apache.org/log4j/2.x/)
 - [JUnit Jupiter](https://github.com/junit-team/junit5)
+- [TestFX](https://github.com/TestFX/TestFX/)
