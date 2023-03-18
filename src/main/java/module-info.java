@@ -1,4 +1,4 @@
-module com.megabyte6.pixellauncher {
+module org.pixellauncher {
     requires static lombok;
 
     requires transitive javafx.controls;

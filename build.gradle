@@ -52,8 +52,8 @@ java {
 }
 
 application {
-    mainModule = 'com.megabyte6.pixellauncher'
-    mainClass = 'com.megabyte6.pixellauncher.App'
+    mainModule = 'org.pixellauncher'
+    mainClass = 'org.pixellauncher.App'
 }
 
 javafx {
