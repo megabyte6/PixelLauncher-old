@@ -6,7 +6,7 @@ plugins {
     // Apply javafxplugin for JavaFX support.
     id 'org.openjfx.javafxplugin' version '0.0.13'
     // Apply jlink for building the app.
-    id 'org.beryx.jlink' version '2.25.0'
+    id 'org.beryx.jlink' version '2.26.0'
     // Apply lombok.
     id 'io.freefair.lombok' version '6.6.3'
 
@@ -17,6 +17,7 @@ plugins {
 }
 
 version = appVersion
+def osName = System.getProperty("os.name")
 
 ext {
     // Links for downloading jdks.
@@ -35,6 +36,13 @@ repositories {
 }
 
 dependencies {
+    implementation 'com.google.guava:guava:31.1-jre'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.2'
+    implementation 'org.apache.logging.log4j:log4j-api:2.20.0'
+    implementation 'org.apache.logging.log4j:log4j-core:2.20.0'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
+    testImplementation 'org.testfx:testfx-junit5:4.0.16-alpha'
 }
 
 java {
@@ -84,17 +92,30 @@ jlink {
         targetPlatformName = jpackageTargetPlatform
         imageName = 'Pixel Launcher'
         installerName = 'PixelLauncher-installer'
-        icon = 'src/main/resources/icon.ico'
+        icon = 'src/main/resources/icon.png'
         vendor = 'Brayden Chan'
 
-        if (System.getProperty("os.name").toLowerCase().indexOf("windows") >= 0) {
-            installerOptions = [
+        if (jpackageOutputType != 'default') {
+            installerOptions = ["--type $jpackageOutputType"]
+        } else {
+            installerOptions = []
+        }
+
+        if (osName.toLowerCase().indexOf("windows") != -1) {
+            installerOptions += [
                 '--win-dir-chooser',
                 '--win-menu',
                 '--win-menu-group', 'Pixel Launcher',
                 '--win-per-user-install',
                 '--win-shortcut',
-                '--win-shortcut-prompt'
+                '--win-shortcut-prompt',
+                '--win-update-url', 'https://github.com/megabyte6/PixelLauncher/releases/latest'
+            ]
+        } else if (osName.toLowerCase().indexOf("linux") != -1) {
+            installerOptions += [
+                '--linux-package-name', 'Pixel Launcher',
+                '--linux-menu-group', 'Pixel Launcher',
+                '--linux-shortcut'
             ]
         }
     }

@@ -3,4 +3,5 @@
 build
 
 # VScode
+.vscode
 bin
