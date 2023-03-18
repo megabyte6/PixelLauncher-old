@@ -101,7 +101,7 @@ jlink {
             installerOptions = []
         }
 
-        if (osName.toLowerCase().indexOf("windows") != -1) {
+        if (osName.toLowerCase().contains("windows")) {
             installerOptions += [
                 '--win-dir-chooser',
                 '--win-menu',
