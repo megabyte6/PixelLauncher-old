@@ -11,8 +11,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'start'");
+        primaryStage.show();
     }
 
 }
