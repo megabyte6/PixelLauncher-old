@@ -121,6 +121,10 @@ jlink {
     }
 }
 
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
 // Current fix for an upstream bug relating to
 // https://github.com/redhat-developer/vscode-java/issues/881
 // for the java extension for vscode.
