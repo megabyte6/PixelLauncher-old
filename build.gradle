@@ -91,8 +91,8 @@ jlink {
     jpackage {
         targetPlatformName = jpackageTargetPlatform
         imageName = 'Pixel Launcher'
-        installerName = 'PixelLauncher-installer'
-        icon = 'src/main/resources/icon.png'
+        installerName = 'PixelLauncher'
+        // icon = 'src/main/resources/icon.png'
         vendor = 'Brayden Chan'
 
         if (jpackageOutputType != 'default') {
@@ -111,7 +111,7 @@ jlink {
                 '--win-shortcut-prompt',
                 '--win-update-url', 'https://github.com/megabyte6/PixelLauncher/releases/latest'
             ]
-        } else if (osName.toLowerCase().indexOf("linux") != -1) {
+        } else if (osName.toLowerCase().contains("linux")) {
             installerOptions += [
                 '--linux-package-name', 'Pixel Launcher',
                 '--linux-menu-group', 'Pixel Launcher',
