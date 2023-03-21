@@ -1,6 +1,10 @@
 module org.pixellauncher {
     requires static lombok;
 
+    requires MaterialFX;
+
+    requires org.kordamp.ikonli.javafx;
+
     requires javafx.graphics;
     requires transitive javafx.fxml;
 
