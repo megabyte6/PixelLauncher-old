@@ -9,11 +9,6 @@ plugins {
     id 'org.beryx.jlink' version '2.26.0'
     // Apply lombok.
     id 'io.freefair.lombok' version '6.6.3'
-
-    // Current fix for an upstream bug relating to
-    // https://github.com/redhat-developer/vscode-java/issues/881
-    // for the java extension for vscode.
-    id 'eclipse'
 }
 
 version = appVersion
@@ -123,20 +118,4 @@ jlink {
 
 tasks.named('test') {
     useJUnitPlatform()
-}
-
-// Current fix for an upstream bug relating to
-// https://github.com/redhat-developer/vscode-java/issues/881
-// for the java extension for vscode.
-eclipse {
-    classpath {
-        containers 'org.eclipse.buildship.core.gradleclasspathcontainer'
-        file {
-            whenMerged {
-                entries.findAll { it.properties.kind.equals('lib') && !it.properties.path.contains("junit") }.each {
-                    it.entryAttributes['module'] = 'true'
-                }
-            }
-        }
-    }
 }
