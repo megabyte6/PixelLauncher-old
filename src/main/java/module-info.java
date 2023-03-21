@@ -1,7 +1,7 @@
 module org.pixellauncher {
     requires static lombok;
 
-    requires transitive javafx.controls;
+    requires javafx.graphics;
     requires transitive javafx.fxml;
 
     opens org.pixellauncher.controller to javafx.fxml;
