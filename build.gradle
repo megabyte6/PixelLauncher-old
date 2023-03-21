@@ -74,13 +74,13 @@ jlink {
         jdkLinks.each { key, value ->
             targetPlatform(key) {
                 jdkHome = jdkDownload(value)
-                addExtraModulePath('jmods/17.0.6' + key.split('-').join('/'))
+                addExtraModulePath('jmods/19.0.2.1' + key.split('-').join('/'))
             }
         }
     } else {
         targetPlatform(jlinkTargetPlatform) {
             jdkHome = jdkDownload(jdkLinks[jlinkTargetPlatform])
-            addExtraModulePath('jmods/17.0.6' + jlinkTargetPlatform.split('-').join('/'))
+            addExtraModulePath('jmods/19.0.2.1' + jlinkTargetPlatform.split('-').join('/'))
         }
     }
 
