@@ -5,6 +5,8 @@ module org.pixellauncher {
 
     requires org.kordamp.ikonli.javafx;
 
+    requires transitive com.fasterxml.jackson.databind;
+
     requires javafx.graphics;
     requires transitive javafx.fxml;
 
