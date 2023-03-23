@@ -13,9 +13,8 @@ import lombok.Getter;
 import lombok.Setter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.pixellauncher.constant.Constants;
 import org.pixellauncher.setting.Settings;
-import org.pixellauncher.theme.Theme;
+import org.pixellauncher.ui.Theme;
 import org.pixellauncher.util.OS;
 
 public class App extends Application {

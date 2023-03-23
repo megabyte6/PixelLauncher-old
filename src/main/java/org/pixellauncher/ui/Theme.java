@@ -1,4 +1,4 @@
-package org.pixellauncher.theme;
+package org.pixellauncher.ui;
 
 import org.pixellauncher.ResourceLoader;
 
@@ -10,8 +10,8 @@ public enum Theme {
 
     public static URL getStyleSheet(Theme theme) {
         return ResourceLoader.loadURL(switch (theme) {
-            case LIGHT -> "theme/light.css";
-            case DARK -> "theme/dark.css";
+            case LIGHT -> "themes/light.css";
+            case DARK -> "themes/dark.css";
         });
     }
 

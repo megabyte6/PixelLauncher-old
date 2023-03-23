@@ -1,4 +1,4 @@
-package org.pixellauncher.constant;
+package org.pixellauncher;
 
 import org.pixellauncher.util.OS;
 
