@@ -8,7 +8,7 @@ plugins {
     // Apply jlink for building the app.
     id 'org.beryx.jlink' version '2.26.0'
     // Apply lombok.
-    id 'io.freefair.lombok' version '6.6.3'
+    id 'io.freefair.lombok' version '8.0.1'
 }
 
 version = appVersion
@@ -76,13 +76,13 @@ jlink {
         jdkLinks.each { key, value ->
             targetPlatform(key) {
                 jdkHome = jdkDownload(value)
-                addExtraModulePath('jmods/19.0.2.1' + key.split('-').join('/'))
+                addExtraModulePath('jmods/20/' + key.split('-').join('/'))
             }
         }
     } else {
         targetPlatform(jlinkTargetPlatform) {
             jdkHome = jdkDownload(jdkLinks[jlinkTargetPlatform])
-            addExtraModulePath('jmods/19.0.2.1' + jlinkTargetPlatform.split('-').join('/'))
+            addExtraModulePath('jmods/20/' + jlinkTargetPlatform.split('-').join('/'))
         }
     }
 
