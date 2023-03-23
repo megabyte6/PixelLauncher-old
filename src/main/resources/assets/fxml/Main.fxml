@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.*?>
-<VBox prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+<VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0"
+      xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="org.pixellauncher.controller.MainController">
    <children>
       <AnchorPane prefHeight="30.0">
@@ -17,10 +19,13 @@
             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
          </VBox.margin>
       </AnchorPane>
-      <FlowPane fx:id="instanceContainer" prefWidth="1000.0" VBox.vgrow="ALWAYS">
+      <MFXScrollPane fitToHeight="true" fitToWidth="true" VBox.vgrow="ALWAYS">
+         <content>
+            <FlowPane fx:id="instanceContainer"/>
+         </content>
          <VBox.margin>
             <Insets bottom="25.0" left="25.0" right="25.0"/>
          </VBox.margin>
-      </FlowPane>
+      </MFXScrollPane>
    </children>
 </VBox>
