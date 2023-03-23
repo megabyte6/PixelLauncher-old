@@ -2,6 +2,8 @@ package org.pixellauncher.setting;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
+import org.pixellauncher.App;
+import org.pixellauncher.theme.Theme;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -17,14 +19,14 @@ public class Settings {
     }
 
     public void save(Path path) throws IOException {
+        if (!Files.isWritable(path.getParent()))
+            throw new IOException("Settings directory '" + path.getParent() + "' is not writable.");
+
         final ObjectMapper mapper = new ObjectMapper();
         mapper.writerWithDefaultPrettyPrinter().writeValue(path.toFile(), this);
     }
 
     public static Settings load(Path path) throws IOException {
-        if (Files.isDirectory(path) || !Files.isReadable(path))
-            return new Settings();
-
         final ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(path.toFile(), Settings.class);
     }
@@ -34,8 +36,7 @@ public class Settings {
         try {
             settings = load(path);
         } catch (Exception e) {
-            System.err.println("WARNING: Settings failed to load.");
-            e.printStackTrace();
+            App.LOGGER.info("Settings failed to load. Using default.");
         }
 
         return settings;

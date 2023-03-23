@@ -43,15 +43,26 @@ public enum OS {
     }
 
     public static Path getStoragePath() {
+        final Path portableStoragePath = Path.of("data");
+        if (Files.exists(portableStoragePath))
+            return portableStoragePath;
+
         return switch (getOS()) {
             case WINDOWS -> Paths.get(System.getenv("APPDATA"))
-                    .resolve("." + Constants.LAUNCHER_NAME.toLowerCase());
+                    .resolve(Constants.LAUNCHER_NAME);
             case MAC_OS -> Paths.get(System.getProperty("user.home"))
                     .resolve("Library").resolve("Application Support")
                     .resolve("." + Constants.LAUNCHER_NAME.toLowerCase());
             case LINUX -> Paths.get(System.getProperty("user.home"))
                     .resolve("." + Constants.LAUNCHER_NAME.toLowerCase());
         };
+    }
+
+    public static boolean createStorageDirectory() {
+        if (!Files.exists(Constants.STORAGE_PATH)) {
+            return Constants.STORAGE_PATH.toFile().mkdirs();
+        }
+        return true;
     }
 
     public static boolean isUsingFlatpak() {
