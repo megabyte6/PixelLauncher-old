@@ -31,6 +31,7 @@ repositories {
 }
 
 dependencies {
+    implementation 'eu.iamgio:animated:0.7.0'
     implementation 'com.google.guava:guava:31.1-jre'
     implementation 'org.kordamp.ikonli:ikonli-javafx:12.3.1'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.2'
@@ -89,7 +90,7 @@ jlink {
         targetPlatformName = jpackageTargetPlatform
         imageName = 'Pixel Launcher'
         installerName = 'PixelLauncher'
-        // icon = 'src/main/resources/icon.png'
+        icon = 'src/main/resources/icon.png'
         vendor = 'Brayden Chan'
 
         if (jpackageOutputType != 'default') {
