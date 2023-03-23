@@ -1,7 +1,11 @@
 package org.pixellauncher.setting;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import javafx.geometry.Dimension2D;
+import javafx.geometry.Point2D;
+import javafx.stage.Screen;
 import lombok.Data;
+import lombok.NonNull;
 import org.pixellauncher.App;
 import org.pixellauncher.theme.Theme;
 
@@ -12,11 +16,15 @@ import java.nio.file.Path;
 @Data
 public class Settings {
 
-    private Theme theme;
+    // Window settings.
+    private Dimension2D launcherSize = new Dimension2D(1000, 600);
+    private Point2D launcherPosition = new Point2D(
+            (Screen.getPrimary().getBounds().getWidth() / 2) - (getLauncherSize().getWidth() / 2),
+            (Screen.getPrimary().getBounds().getHeight() / 2) - (getLauncherSize().getHeight() / 2));
 
-    public Settings() {
-        theme = Theme.DARK;
-    }
+    // General settings.
+    @NonNull
+    private Theme theme = Theme.DARK;
 
     public void save(Path path) throws IOException {
         if (!Files.isWritable(path.getParent()))
