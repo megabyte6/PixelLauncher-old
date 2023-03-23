@@ -1,6 +1,6 @@
 package org.pixellauncher.util;
 
-import org.pixellauncher.constant.Constants;
+import org.pixellauncher.Constants;
 
 import java.nio.file.Files;
 import java.nio.file.Path;

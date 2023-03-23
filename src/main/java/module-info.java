@@ -11,7 +11,7 @@ module org.pixellauncher {
 
     requires transitive com.fasterxml.jackson.databind;
     exports org.pixellauncher.setting to com.fasterxml.jackson.databind;
-    exports org.pixellauncher.theme to com.fasterxml.jackson.databind;
+    exports org.pixellauncher.ui to com.fasterxml.jackson.databind;
 
     requires org.apache.logging.log4j;
 
