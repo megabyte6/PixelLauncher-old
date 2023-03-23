@@ -1,14 +1,23 @@
 package org.pixellauncher.controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 
 public class MainController {
 
     @FXML
-    private AnchorPane rootPane;
+    private FlowPane instanceContainer;
 
     @FXML
-    private void initialize() {}
+    private void initialize() {
+    }
+
+    @FXML
+    private void handleAccountButton() {
+    }
+
+    @FXML
+    private void handleSettingsButton() {
+    }
 
 }
