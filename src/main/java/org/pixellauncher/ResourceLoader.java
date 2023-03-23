@@ -16,7 +16,7 @@ public class ResourceLoader {
      * @return A {@link URL} representing the resource.
      */
     public static URL loadURL(String path) {
-        return ResourceLoader.class.getResource(path);
+        return ResourceLoader.class.getResource("/assets/" + path);
     }
 
     /**
@@ -25,7 +25,7 @@ public class ResourceLoader {
      * @return An {@link InputStream} of the resource.
      */
     public static InputStream loadStream(String path) {
-        return ResourceLoader.class.getResourceAsStream(path);
+        return ResourceLoader.class.getResourceAsStream("/assets/" + path);
     }
 
     /**
