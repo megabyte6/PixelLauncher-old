@@ -31,7 +31,8 @@ public class ResourceLoader {
     /**
      * Call {@code load()} to load the fxml and call the controller.
      *
-     * @param path The location of the {@code fxml} file to load.
+     * @param path The location of the {@code fxml} file to load. Excluding the
+     *             {@code assets} directory.
      * @return An {@link FXMLLoader} representing the {@code fxml} file
      * given.
      */
