@@ -1,6 +1,7 @@
 package org.pixellauncher.setting;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import javafx.geometry.Dimension2D;
 import javafx.geometry.Point2D;
 import javafx.stage.Screen;
@@ -17,7 +18,9 @@ import java.nio.file.Path;
 public class Settings {
 
     // Window settings.
+    @JsonDeserialize(using = Dimension2DDeserializer.class)
     private Dimension2D launcherSize = new Dimension2D(1000, 600);
+    @JsonDeserialize(using = Point2DDeserializer.class)
     private Point2D launcherPosition = new Point2D(
             (Screen.getPrimary().getBounds().getWidth() / 2) - (getLauncherSize().getWidth() / 2),
             (Screen.getPrimary().getBounds().getHeight() / 2) - (getLauncherSize().getHeight() / 2));
