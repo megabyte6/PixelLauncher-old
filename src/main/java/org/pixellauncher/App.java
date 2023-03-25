@@ -59,7 +59,7 @@ public class App extends Application {
 
         // Add other stage info.
         primaryStage.getIcons().add(new Image(ResourceLoader.loadStream("icon.png")));
-        primaryStage.setTitle(Constants.LAUNCHER_NAME_FORMATTED);
+        primaryStage.setTitle(Constants.LAUNCHER_NAME);
         primaryStage.show();
     }
 

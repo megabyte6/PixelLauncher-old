@@ -49,12 +49,12 @@ public enum OS {
 
         return switch (getOS()) {
             case WINDOWS -> Paths.get(System.getenv("APPDATA"))
-                    .resolve(Constants.LAUNCHER_NAME_FORMATTED);
+                    .resolve(Constants.LAUNCHER_NAME);
             case MAC_OS -> Paths.get(System.getProperty("user.home"))
                     .resolve("Library").resolve("Application Support")
-                    .resolve("." + Constants.LAUNCHER_NAME_FORMATTED.toLowerCase());
+                    .resolve("." + Constants.LAUNCHER_NAME.replaceAll("\\s+", "").toLowerCase());
             case LINUX -> Paths.get(System.getProperty("user.home"))
-                    .resolve("." + Constants.LAUNCHER_NAME_FORMATTED.toLowerCase());
+                    .resolve("." + Constants.LAUNCHER_NAME.replaceAll("\\s+", "").toLowerCase());
         };
     }
 
