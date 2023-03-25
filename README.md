@@ -9,6 +9,7 @@ This project was possible due to the following plugins:
 
 And libraries:
 - [animated](https://github.com/iAmGio/animated)
+- [AnimateFX](https://github.com/Typhon0/AnimateFX)
 - [Google Guava](https://github.com/google/guava)
 - [ikonli](https://github.com/kordamp/ikonli)
 - [Jackson](https://github.com/FasterXML/jackson)

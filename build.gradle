@@ -32,6 +32,7 @@ repositories {
 
 dependencies {
     implementation 'eu.iamgio:animated:0.7.0'
+    implementation 'io.github.typhon0:AnimateFX:1.2.3'
     implementation 'com.google.guava:guava:31.1-jre'
     implementation 'org.kordamp.ikonli:ikonli-javafx:12.3.1'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.2'
@@ -40,7 +41,6 @@ dependencies {
     implementation 'io.github.palexdev:materialfx:11.15.0'
 
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
-    testImplementation 'org.testfx:testfx-junit5:4.0.16-alpha'
 }
 
 java {
@@ -60,12 +60,29 @@ javafx {
 }
 
 jlink {
-    options = [
+    addOptions(
         '--strip-debug',
         '--compress', '2',
         '--no-header-files',
         '--no-man-pages'
-    ]
+    )
+
+    // Remove the following as soon as the dependencies are fixed (upstream)
+    // forceMerge is usually needed when some non-modular artifacts in the
+    // dependency graph use code that was previously part of the JDK but it was
+    // removed in the newer releases.
+    // The pom.xml associated with such a non-modular artifact does not mention
+    // that the artifact depends on the removed code (because the artifact was
+    // published when this code was still available in the JDK).
+    forceMerge('jackson', 'log4j-api')
+
+    // Some libraries using JavaFX do not specify their JavaFX dependencies
+    // because JavaFX was part of the JDK before being removed in Java 11.
+    // Including addExtraDependencies("javafx") into the jlink block solves
+    // this problem.
+    // Can be removed once AnimateFX and animated become modular.
+    addExtraDependencies("javafx")
+
     launcher {
         noConsole = true
     }
@@ -90,7 +107,7 @@ jlink {
         targetPlatformName = jpackageTargetPlatform
         imageName = 'Pixel Launcher'
         installerName = 'PixelLauncher'
-        icon = 'src/main/resources/icon.png'
+        icon = 'src/main/resources/assets/icon.png'
         vendor = 'Brayden Chan'
 
         if (jpackageOutputType != 'default') {
@@ -100,6 +117,7 @@ jlink {
         }
 
         if (osName.toLowerCase().contains("windows")) {
+            icon = 'src/main/resources/assets/icon.ico'
             installerOptions += [
                 '--win-dir-chooser',
                 '--win-menu',
@@ -110,11 +128,14 @@ jlink {
                 '--win-update-url', 'https://github.com/megabyte6/PixelLauncher/releases/latest'
             ]
         } else if (osName.toLowerCase().contains("linux")) {
+            icon = 'src/main/resources/assets/icon.png'
             installerOptions += [
                 '--linux-package-name', 'Pixel Launcher',
                 '--linux-menu-group', 'Pixel Launcher',
                 '--linux-shortcut'
             ]
+        } else {
+            icon = 'src/main/resources/assets/icon.png'
         }
     }
 }
