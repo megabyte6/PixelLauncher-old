@@ -9,7 +9,7 @@ module org.pixellauncher {
     // Modules from dependencies.
     requires org.kordamp.ikonli.javafx;
 
-    requires transitive com.fasterxml.jackson.databind;
+    requires com.fasterxml.jackson.databind;
     opens org.pixellauncher.setting to com.fasterxml.jackson.databind;
     opens org.pixellauncher.ui to com.fasterxml.jackson.databind;
 
