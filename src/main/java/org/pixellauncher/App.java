@@ -58,7 +58,7 @@ public class App extends Application {
         primaryStage.setHeight(getSettings().getLauncherSize().getHeight());
 
         // Add other stage info.
-        primaryStage.getIcons().add(new Image(ResourceLoader.loadStream("logo.png")));
+        primaryStage.getIcons().add(new Image(ResourceLoader.loadStream("icon.png")));
         primaryStage.setTitle(Constants.LAUNCHER_NAME_FORMATTED);
         primaryStage.show();
     }
