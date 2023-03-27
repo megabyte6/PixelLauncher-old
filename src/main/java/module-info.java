@@ -11,6 +11,7 @@ module org.pixellauncher {
 
     requires com.fasterxml.jackson.databind;
     opens org.pixellauncher.setting to com.fasterxml.jackson.databind;
+    opens org.pixellauncher.setting.deserializer to com.fasterxml.jackson.databind;
     opens org.pixellauncher.ui to com.fasterxml.jackson.databind;
 
     requires org.apache.logging.log4j;
