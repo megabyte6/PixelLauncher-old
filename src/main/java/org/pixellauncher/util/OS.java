@@ -51,10 +51,13 @@ public enum OS {
             case WINDOWS -> Paths.get(System.getenv("APPDATA"))
                     .resolve(Constants.LAUNCHER_NAME);
             case MAC_OS -> Paths.get(System.getProperty("user.home"))
-                    .resolve("Library").resolve("Application Support")
-                    .resolve("." + Constants.LAUNCHER_NAME.replaceAll("\\s+", "").toLowerCase());
+                    .resolve("Library")
+                    .resolve("Application Support")
+                    .resolve(Constants.REVERSE_DOMAIN_NAME);
             case LINUX -> Paths.get(System.getProperty("user.home"))
-                    .resolve("." + Constants.LAUNCHER_NAME.replaceAll("\\s+", "").toLowerCase());
+                    .resolve(".local")
+                    .resolve("share")
+                    .resolve(Constants.LAUNCHER_NAME.replaceAll("\\s+", "").toLowerCase());
         };
     }
 

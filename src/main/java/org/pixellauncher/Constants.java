@@ -7,6 +7,7 @@ import java.nio.file.Path;
 public class Constants {
 
     public static final String LAUNCHER_NAME = "Pixel Launcher";
+    public static final String REVERSE_DOMAIN_NAME = "org.pixellauncher";
     public static final String LAUNCHER_WEBSITE = "https://github.com/megabyte6/PixelLauncher";
 
     public static final Path STORAGE_PATH = OS.getStoragePath();
