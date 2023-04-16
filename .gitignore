@@ -4,3 +4,6 @@ build
 
 # IntelliJ IDEA
 .idea
+
+# Project specific runtime files
+logs
