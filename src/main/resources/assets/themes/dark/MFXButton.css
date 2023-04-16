@@ -1,0 +1,9 @@
+@import 'Colors.css'
+
+.mfx-button,
+.mfx-button:armed,
+.mfx-button:focused {
+    -fx-background-color: -pxl-foreground;
+
+    -fx-text-fill: -pxl-text-color;
+}

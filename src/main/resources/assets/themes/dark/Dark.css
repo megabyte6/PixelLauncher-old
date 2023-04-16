@@ -1,0 +1,7 @@
+@import 'Colors.css';
+@import 'MFXButton.css'
+@import 'MFXScrollPane.css'
+
+.root {
+    -fx-background-color: -pxl-background;
+}

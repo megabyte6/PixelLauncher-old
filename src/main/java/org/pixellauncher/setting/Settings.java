@@ -8,7 +8,6 @@ import javafx.stage.Screen;
 import lombok.Data;
 import lombok.NonNull;
 import org.pixellauncher.App;
-import org.pixellauncher.ui.Theme;
 
 import java.io.IOException;
 import java.nio.file.Files;

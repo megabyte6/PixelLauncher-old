@@ -1,0 +1,9 @@
+@import 'Colors.css'
+
+.mfx-scroll-pane {
+    -fx-background-color: -pxl-background;
+}
+
+.mfx-scroll-pane:focused {
+	-fx-background-color: -pxl-background;
+}
