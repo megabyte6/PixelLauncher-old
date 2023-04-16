@@ -4,28 +4,24 @@
 <?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.*?>
-<VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0"
-      xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="org.pixellauncher.controller.MainController">
+<VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pixellauncher.controller.MainController">
    <children>
-      <AnchorPane prefHeight="30.0">
-         <children>
-            <MFXButton fx:id="handleSettingsButton" text="Settings" AnchorPane.bottomAnchor="0.0"
-                       AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
-            <MFXButton onAction="#handleAccountButton" text="Account" AnchorPane.bottomAnchor="0.0"
-                       AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0"/>
-         </children>
-         <VBox.margin>
-            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
-         </VBox.margin>
-      </AnchorPane>
       <MFXScrollPane fitToHeight="true" fitToWidth="true" VBox.vgrow="ALWAYS">
          <content>
-            <FlowPane fx:id="instanceContainer"/>
+            <FlowPane fx:id="instanceContainer" />
          </content>
          <VBox.margin>
-            <Insets bottom="25.0" left="25.0" right="25.0"/>
+            <Insets left="25.0" right="25.0" top="25.0" />
          </VBox.margin>
       </MFXScrollPane>
+      <AnchorPane prefHeight="30.0">
+         <children>
+            <MFXButton onAction="#handleAccountButton" text="Account" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <MFXButton fx:id="handleSettingsButton" text="Settings" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </VBox.margin>
+      </AnchorPane>
    </children>
 </VBox>

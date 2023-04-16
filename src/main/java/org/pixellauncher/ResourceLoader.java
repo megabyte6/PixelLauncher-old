@@ -29,15 +29,26 @@ public class ResourceLoader {
     }
 
     /**
+     * @param path The location of the resource to load. Excluding the
+     *             {@code assets} directory.
+     * @return A {@link String} of the {@link URL} of the path.
+     */
+    public static String load(String path) {
+        return loadURL(path).toString();
+    }
+
+    /**
      * Call {@code load()} to load the fxml and call the controller.
      *
      * @param path The location of the {@code fxml} file to load. Excluding the
-     *             {@code assets} directory.
+     *             {@code assets} and {@code fxml} directories.
      * @return An {@link FXMLLoader} representing the {@code fxml} file
-     * given.
+     *         given.
      */
     public static FXMLLoader loadFXML(String path) {
-        return new FXMLLoader(loadURL(path));
+        if (!path.endsWith(".fxml"))
+            path += ".fxml";
+        return new FXMLLoader(loadURL("fxml/" + path));
     }
 
 }
