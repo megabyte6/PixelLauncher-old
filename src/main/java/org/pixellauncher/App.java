@@ -14,7 +14,6 @@ import lombok.Setter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.pixellauncher.setting.Settings;
-import org.pixellauncher.ui.Theme;
 import org.pixellauncher.util.OS;
 
 public class App extends Application {
@@ -42,14 +41,14 @@ public class App extends Application {
     public void start(Stage primaryStage) throws Exception {
         App.stage = primaryStage;
 
-        final Parent root = ResourceLoader.loadFXML("fxml/Main.fxml").load();
+        final Parent root = ResourceLoader.loadFXML("Main").load();
         final Scene scene = new Scene(root);
         primaryStage.setScene(scene);
 
-        // Load correct theme.
-        final String styleSheetPath = Theme.getStyleSheet(getSettings().getTheme()).toString();
-        scene.getStylesheets().setAll(styleSheetPath);
-        MFXThemeManager.addOn(scene, Themes.DEFAULT, Themes.LEGACY);
+        // Load the correct theme.
+//        final String styleSheetPath = Theme.getStyleSheet(getSettings().getTheme()).toString();
+//        scene.getStylesheets().setAll(styleSheetPath);
+        MFXThemeManager.addOn(scene, Themes.DEFAULT, getSettings().getTheme());
 
         // Set persistent window properties.
         primaryStage.setX(getSettings().getLauncherPosition().getX());
