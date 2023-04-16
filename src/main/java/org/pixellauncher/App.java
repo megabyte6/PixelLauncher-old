@@ -28,10 +28,11 @@ public class App extends Application {
     private static Settings settings;
 
     public static void main(String[] args) {
-        App.LOG.info("Starting " + Constants.LAUNCHER_NAME.replace("\\s+", ""));
+        App.LOG.info("Starting " + Constants.LAUNCHER_NAME.replaceAll("\\s+", ""));
         if (!OS.createStorageDirectory()) {
-            App.LOG.fatal("Failed to create the app config and data directory!");
-            App.LOG.info("Stopping " + Constants.LAUNCHER_NAME.replace("\\s+", ""));
+            App.LOG.fatal("Failed to create the app config and data directory at '"
+                    + OS.getStoragePath().toAbsolutePath() + "'");
+            App.LOG.info("Stopping " + Constants.LAUNCHER_NAME.replaceAll("\\s+", ""));
             return;
         }
         settings = Settings.loadElseDefault(Constants.CONFIG_PATH);
@@ -48,17 +49,18 @@ public class App extends Application {
         final Scene scene = new Scene(root);
         primaryStage.setScene(scene);
 
-        // Load the correct theme.
 //        final String styleSheetPath = Theme.getStyleSheet(getSettings().getTheme()).toString();
 //        scene.getStylesheets().setAll(styleSheetPath);
         App.LOG.debug("Loading theme");
         MFXThemeManager.addOn(scene, Themes.DEFAULT, getSettings().getTheme());
 
-        // Set persistent window properties.
-        if (getSettings().isSaveWindowSizeAndLocation()) {
-            App.LOG.debug("Restoring window size and starting location");
+        if (getSettings().isSaveWindowLocation()) {
+            App.LOG.debug("Restoring window starting location");
             primaryStage.setX(getSettings().getLauncherPosition().getX());
             primaryStage.setY(getSettings().getLauncherPosition().getY());
+        }
+        if (getSettings().isSaveWindowSize()) {
+            App.LOG.debug("Restoring window size");
             primaryStage.setWidth(getSettings().getLauncherSize().getWidth());
             primaryStage.setHeight(getSettings().getLauncherSize().getHeight());
         }
@@ -76,7 +78,7 @@ public class App extends Application {
 
         writeSettings();
 
-        App.LOG.info("Stopping" + Constants.LAUNCHER_NAME.replace("\\s+", ""));
+        App.LOG.info("Stopping " + Constants.LAUNCHER_NAME.replaceAll("\\s+", ""));
     }
 
     public static void writeSettings() {
@@ -88,8 +90,7 @@ public class App extends Application {
             App.LOG.info("Saving settings");
             settings.save(Constants.CONFIG_PATH);
         } catch (Exception e) {
-            App.LOG.error("Failed to write settings :(");
-            App.LOG.catching(e);
+            App.LOG.error("Failed to write settings :(", e);
         }
     }
 

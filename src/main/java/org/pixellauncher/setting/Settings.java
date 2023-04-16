@@ -17,9 +17,10 @@ import java.nio.file.Path;
 public class Settings {
 
     // Window settings.
-    private boolean saveWindowSizeAndLocation = true;
+    private boolean saveWindowSize = true;
     @JsonDeserialize(using = org.pixellauncher.setting.deserializer.Dimension2D.class)
     private Dimension2D launcherSize = new Dimension2D(1000, 600);
+    private boolean saveWindowLocation = true;
     @JsonDeserialize(using = org.pixellauncher.setting.deserializer.Point2D.class)
     private Point2D launcherPosition = new Point2D(
             (Screen.getPrimary().getBounds().getWidth() / 2) - (getLauncherSize().getWidth() / 2),
