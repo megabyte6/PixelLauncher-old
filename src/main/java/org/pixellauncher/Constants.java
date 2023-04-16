@@ -12,6 +12,5 @@ public class Constants {
 
     public static final Path STORAGE_PATH = OS.getStoragePath();
     public static final Path CONFIG_PATH = STORAGE_PATH.resolve("config.json");
-    public static final Path LOG_PATH = STORAGE_PATH.resolve("logs");
 
 }
