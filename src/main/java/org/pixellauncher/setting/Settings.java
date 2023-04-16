@@ -17,6 +17,7 @@ import java.nio.file.Path;
 public class Settings {
 
     // Window settings.
+    private boolean saveWindowSizeAndLocation = true;
     @JsonDeserialize(using = org.pixellauncher.setting.deserializer.Dimension2D.class)
     private Dimension2D launcherSize = new Dimension2D(1000, 600);
     @JsonDeserialize(using = org.pixellauncher.setting.deserializer.Point2D.class)
@@ -46,7 +47,7 @@ public class Settings {
         try {
             settings = load(path);
         } catch (Exception e) {
-            App.LOGGER.info("Settings failed to load. Using default.");
+            App.LOG.info("Settings failed to load. Using default.");
         }
 
         return settings;

@@ -25,8 +25,8 @@ public class MainController {
         try {
             root = ResourceLoader.loadFXML("AccountManager").load();
         } catch (IOException ioe) {
-            App.LOGGER.error("Unable to load AccountManager FXML file.");
-            App.LOGGER.catching(ioe);
+            App.LOG.error("Unable to load AccountManager FXML file");
+            App.LOG.catching(ioe);
 
             return;
         }
