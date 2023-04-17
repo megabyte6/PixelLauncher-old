@@ -90,7 +90,7 @@ public class App extends Application {
             App.LOG.info("Saving settings");
             settings.save(Constants.CONFIG_PATH);
         } catch (Exception e) {
-            App.LOG.error("Failed to write settings :(", e);
+            App.LOG.warn("Failed to write settings :(", e);
         }
     }
 
