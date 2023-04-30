@@ -18,7 +18,7 @@ import org.pixellauncher.util.OS;
 
 public class App extends Application {
 
-    public static final Logger LOG = LogManager.getLogger(App.class);
+    public static final Logger LOGGER = LogManager.getLogger(App.class);
 
     @Getter
     private static Stage stage;
@@ -28,11 +28,11 @@ public class App extends Application {
     private static Settings settings;
 
     public static void main(String[] args) {
-        App.LOG.info("Starting " + Constants.LAUNCHER_NAME.replaceAll("\\s+", ""));
+        App.LOGGER.info("Starting " + Constants.LAUNCHER_NAME.replaceAll("\\s+", ""));
         if (!OS.createStorageDirectory()) {
-            App.LOG.fatal("Failed to create the app config and data directory at '"
+            App.LOGGER.fatal("Failed to create the app config and data directory at '"
                     + OS.getStoragePath().toAbsolutePath() + "'");
-            App.LOG.info("Stopping " + Constants.LAUNCHER_NAME.replaceAll("\\s+", ""));
+            App.LOGGER.info("Stopping " + Constants.LAUNCHER_NAME.replaceAll("\\s+", ""));
             return;
         }
         settings = Settings.loadElseDefault(Constants.CONFIG_PATH);
@@ -44,31 +44,29 @@ public class App extends Application {
     public void start(Stage primaryStage) throws Exception {
         App.stage = primaryStage;
 
-        App.LOG.debug("Loading Main scene");
+        App.LOGGER.debug("Loading Main scene");
         final Parent root = ResourceLoader.loadFXML("Main").load();
         final Scene scene = new Scene(root);
         primaryStage.setScene(scene);
 
-//        final String styleSheetPath = Theme.getStyleSheet(getSettings().getTheme()).toString();
-//        scene.getStylesheets().setAll(styleSheetPath);
-        App.LOG.debug("Loading theme");
+        App.LOGGER.debug("Loading theme");
         MFXThemeManager.addOn(scene, Themes.DEFAULT, getSettings().getTheme());
 
         if (getSettings().isSaveWindowLocation()) {
-            App.LOG.debug("Restoring window starting location");
+            App.LOGGER.debug("Restoring window starting location");
             primaryStage.setX(getSettings().getLauncherPosition().getX());
             primaryStage.setY(getSettings().getLauncherPosition().getY());
         }
         if (getSettings().isSaveWindowSize()) {
-            App.LOG.debug("Restoring window size");
+            App.LOGGER.debug("Restoring window size");
             primaryStage.setWidth(getSettings().getLauncherSize().getWidth());
             primaryStage.setHeight(getSettings().getLauncherSize().getHeight());
         }
 
-        App.LOG.debug("Loading icon");
+        App.LOGGER.debug("Loading icon");
         primaryStage.getIcons().add(new Image(ResourceLoader.loadStream("Pixel Launcher.png")));
         primaryStage.setTitle(Constants.LAUNCHER_NAME);
-        App.LOG.info("Showing window");
+        App.LOGGER.info("Showing window");
         primaryStage.show();
     }
 
@@ -78,7 +76,7 @@ public class App extends Application {
 
         writeSettings();
 
-        App.LOG.info("Stopping " + Constants.LAUNCHER_NAME.replaceAll("\\s+", ""));
+        App.LOGGER.info("Stopping " + Constants.LAUNCHER_NAME.replaceAll("\\s+", ""));
     }
 
     public static void writeSettings() {
@@ -87,10 +85,10 @@ public class App extends Application {
         getSettings().setLauncherSize(new Dimension2D(App.getStage().getWidth(), App.getStage().getHeight()));
 
         try {
-            App.LOG.info("Saving settings");
+            App.LOGGER.info("Saving settings");
             settings.save(Constants.CONFIG_PATH);
         } catch (Exception e) {
-            App.LOG.warn("Failed to write settings :(", e);
+            App.LOGGER.warn("Failed to write settings :(", e);
         }
     }
 

@@ -48,7 +48,7 @@ public class Settings {
         try {
             settings = load(path);
         } catch (Exception e) {
-            App.LOG.info("Settings failed to load. Using default.");
+            App.LOGGER.info("Settings failed to load. Using default.");
         }
 
         return settings;
